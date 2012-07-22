@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Profile App Example</title>
+<script type="text/javascript" src="http://platform.linkedin.com/in.js">
+api_key: yyxc5u8r6n53
+authorize: true
+</script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link media="all" type="text/css" href="jqueryLint/jqueryui.css" rel="stylesheet"/>
+<script type="text/javascript" src="jqueryLint/jquery-1.5b1.js"></script>
+<script type="text/javascript" src="jqueryLint/jquery-ui.min.js"></script> 
+<script src="jqueryLint/jquery.lint.js"></script>
+
+<script type="IN/Login" ></script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+var globalVar={};
+$("#profile").click(function(){
+
+IN.API.Profile("me")
+.fields(["id", "firstName", "lastName", "pictureUrl","headline","positions:(title,summary,startDate,endDate)"])
+.result(function(result) {
+console.log(result.values[0]);//displays the strings in console
+profile = result.values[0];
+var positions = result.values[0].positions;
+var startdate =  result.values[0].positions.values[0].startDate.month + "/" + result.values[0].positions.values[0].startDate.year;
+globalVar.firstName=profile.firstName;
+profHTML = "<p><a href=\"" + profile.publicProfileUrl + "\">";
+profHTML += "<img class=img_border align=\"left\" src=\"" + profile.pictureUrl + "\"></a>";profHTML += "<a href=\"" + profile.publicProfileUrl + "\">";
+profHTML += "<h2 class=myname>" + profile.firstName + " " + profile.lastName + "</a></h2>";
+profHTML += "<span class=myheadline>" + profile.headline + "</span>";
+profHTML += "<br><br><b>Start Date:</b><span class=myheadline>" + startdate + " to Present</span>";
+$("#content").html(profHTML);
+});
+
+});
+
+$("#connections").click(function(){
+IN.API.Connections("me")
+.fields(["firstName", "lastName","pictureUrl","publicProfileUrl","headline","positions:(title,summary,startDate,endDate)"])
+.params({"start":0,"count":500})
+.result(function(result) {
+profHTML = "";
+
+for (var index in result.values) {
+	profile = result.values[index]
+	if (profile.pictureUrl) {
+	profHTML += "<p class=myname><a href=\"" + profile.publicProfileUrl + "\">";
+	profHTML += "<img class=img_border height=35 align=\"left\" src=\"" + profile.pictureUrl + "\"></a></p>";
+	profHTML += "" + profile.firstName + " " + profile.lastName + "</a>";
+	profHTML += "<span class=myheadline> : " + profile.headline + "</span>";
+	}
+}
+//profHTML += "<p><img  border='0' align=\"left\" src='c1.jpg'>James Peter</a><br>Software Engineer</p><br>";
+//profHTML += "<p><img  border='0' align=\"left\" src='c2.jpg'>John Paul</a><br>Senior Software Engineer</p>";
+$("#content").html(profHTML);
+});
+});
+
+$("#recomm").click(function(){
+IN.API.Raw("/people/~:(first-name,last-name,recommendations-received)")    
+.result(function(result) {	
+profHTML = "";
+profHTML += "<p>"+result.firstName+" has received 1  recommendations. </p>";
+/*+result.recommendationsReceived._total+*/
+
+var profile="";
+var recommend="";
+var count=0;
+//profHTML +="<p>"+result.recommendationsReceived.values[1].recommendationText+"</p>";
+for (var index in result.recommendationsReceived.values) {
+	profile = result.recommendationsReceived.values[count];
+	//if (result.recommendationsReceived._total) {
+	//alert(profHTML);
+	//+" recommendations !"+result.text+"</p>";
+	recommend = profile.recommender;
+	count++;
+	profHTML += "<p><b> Recommendation #:"+count+"</b><br>" +profile.recommender.firstName+" "+ profile.recommender.lastName+"</p>";
+	profHTML += "<p> "+  profile.recommendationText+" </p>";
+	}
+//}
+profHTML+="<b>Recommendation #1:</b><br><br>Mike is incredible and irreplaceable. He is a self starter and takes extra effort to address any issue.";
+$("#content").html(profHTML);
+});
+});
+
+
+$("#experience").click(function(){
+
+IN.API.Profile("me")
+.fields(["positions:(company,title,summary,startDate,endDate)", "educations","firstName", "lastName"])
+.result(function(result) {
+console.log(result);
+	profile = result.values[0];
+	profHTML = "";
+	profHTML += "<h2 class=myname>" + profile.firstName + " " + profile.lastName + "</a></h2>";
+	for (var index=0; index < profile.positions.values.length; index++) {
+	//positions = profile.positions;
+	//startdate =  result.values[0].positions.values[0].startDate.month + "/" + result.values[0].positions.values[0].startDate.year;
+	profHTML += "<b>Company:</b>"+ profile.positions.values[index].company.name +"</br>";
+	profHTML += "<b>Start Date:</b>"+ profile.positions.values[index].startDate.year +" - ";
+	try
+	{
+		if(profile.positions.values[index].endDate)
+		{
+			profHTML += " "+ profile.positions.values[index].endDate.year +"<br>";
+		}
+		else
+		{
+			profHTML += " Present <br />";
+		}
+	}
+	catch(err)
+	{
+		profHTML += "<b>End Date:</b> Present <br />";
+	}
+
+	profHTML += "<b>Industry:</b> "+ profile.positions.values[index].company.industry +"<br />";
+	try
+	{
+		profHTML += "<b>size:</b> "+profile.positions.values[index].company.size+" <br />";	
+	}
+	catch(err)
+	{		
+		profHTML += "<b>size:</b> Unknown <br />";	
+	}
+	profHTML += "<b>private or public:</b>"+ profile.positions.values[index].company.type +"<br />";	
+	profHTML += "<br />";
+
+	}
+	profHTML += "<br />";
+	$("#content").html(profHTML);
+});
+
+});
+
+$("#education").click(function(){
+IN.API.Profile("me")
+.fields(["positions:(company)", "educations","firstName","lastName"])
+.result(function(result) {
+console.log(result);
+	profile = result.values[0];
+	profHTML = "";
+	profHTML += "<h2 class=myname>" + profile.firstName + " " + profile.lastName + "</a></h2>";
+	for (var index=0; index < profile.educations.values.length; index++) {
+	profHTML += "<b>Degree:</b>"+ profile.educations.values[index].degree +"<br />";
+	profHTML += "<b>field:</b> "+ profile.educations.values[index].fieldOfStudy +"<br />";
+	profHTML += "<b>School:</b> "+ profile.educations.values[index].schoolName +"<br /><br/>";
+	//profHTML += "<b>Start Date:</b><u> "+ profile.educations.values[index].startDate.year +"</u><br />";
+	//profHTML += "<b>End Date:</b><u> "+ profile.educations.values[index].endDate.year +"</u><br />";
+
+	}
+	
+	$("#content").html(profHTML);
+});
+
+});
+
+$("#search").click(function(){
+
+});
+
+$("#jsonResult").click(function(){
+var temp={};
+var temp1={};
+
+/*temp.timeline=temp1;
+
+temp1.headline="Sanjay Rao";
+temp1.type="default";
+temp1.startDate="2011";
+temp1.text="Hahahaha...";
+temp1.asset={};
+temp1.asset.media="http://m3.licdn.com/mpr/mprx/0_imOA6VDqZmAn6GIMidya6ZeMswisXTIMT2om6ZaQ5mcERLpJ7eaje4seNL_5bQovGSpfd0y895Ls";
+temp1.date={};
+temp1.date.startDate="2009"+","+"2";
+temp1.date.endDate="2010"+","+"2";
+
+$("#content").html(JSON.stringify(temp));*/
+//alert(JSON.stringify(temp));
+
+
+});
+
+});
+
+
+
+</script>
+</head>
+
+<body>
+
+<div id="container" >
+
+	<div id="header" style="background-color:#1A2E61;width:380px"><font style="font-size:40px;color:#FFFFFF">Connect Me</font></div>
+
+	<div id="menu" align="top" style="background-color:#4C90A7;height:300px;width:80px;float:left;">
+	<a id="profile" href="#menu" style="color:white;text-decoration: none;" > Profile</a><br />
+    <a id="experience" href="#menu" style="color:white;text-decoration: none;">Experience</a><br/>
+	<a id="education" href="#menu" style="color:white;text-decoration: none;">Education</a><br/>
+	<a id="connections" href="#menu" style="color:white;text-decoration: none;">Connections</a><br />
+	<a id="recomm" href="#menu" style="color:white;text-decoration: none;">Recommend</a><br/>
+    <a id="searchCompany" href="search.html" style="color:white;text-decoration: none;">Search</a><br/>
+	<a id="jsonResult" href="timeline.html" style="color:white;text-decoration: none;">Timeline</a></br>
+	</div>
+
+	<div id="content" style="overflow:scroll;background-color:#E7F0FA;height:300px;width:300px;float:left;">
+	</div>
+	<div id="jsonData"></div><br/>
+	<script type="IN/Login" data-onAuth="showData"></script>
+</div>
+ 
+</body>
+</html>
+

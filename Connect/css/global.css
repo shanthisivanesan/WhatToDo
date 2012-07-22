@@ -1,0 +1,38 @@
+body{
+    margin: 0px;
+    font-family: Arial;
+    font-size: 14px;
+}
+
+#header{
+    height: 5px;
+}
+
+#content{ 
+    background-color: white;
+    margin: auto;
+    width: 100px;
+    color: #666;
+    min-height: 100px;
+    display: table;
+}
+
+#footer{
+    height: 9px;
+}
+
+#header-content{
+    border-top: 1px black solid;
+    display: table;
+    width: 390px;
+    margin: auto;
+}
+#header-content span{
+	font-size: 20px;
+}
+#footer-content{
+    width: 190px;
+    margin: auto;
+    height: 3px;
+    border-bottom: 2px black solid;
+}

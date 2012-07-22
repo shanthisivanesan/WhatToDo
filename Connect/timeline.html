@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="language" content="spanish"/>
+        <meta name="author" content="Flowcode"/>
+        <title>Timeline</title>
+        <link rel="shortcut icon" href="favicon.ico" />
+
+        <link rel="stylesheet" type="text/css" href="css/global.css"></link>
+
+        <!-- jquery -->
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+
+        <!-- fancy-timeline -->
+		<script type="text/javascript" src="js/fancy-timeline.js"></script>
+		<link type="text/css" href="css/ftl-default/fancy-timeline.css" rel="stylesheet" />
+
+    </head>
+    <body>
+        
+        <!-- header -->
+        <div id="header" style="width:300px;float:top;">
+            <div id="header-content">
+				<span>Timeline</span>
+				
+            </div>
+        </div>
+
+        <!-- content -->
+        <div id="content" style="overflow:scroll;height:300px;width:300px;float:left;">
+            <div id="container">
+				<div class="timeline-container"></div>
+            </div>
+        </div>
+
+        <!-- footer -->
+        <div id="footer">
+            <div id="footer-content" style="width:300px;float:bottom;">
+				<button id="back" onclick="javascipt:history.go(-1);">Home</button>
+            </div>
+        </div>
+    </body>
+</html>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+	/*
+	IN.API.Profile("me")
+.fields(["id", "firstName", "lastName", "pictureUrl","headline","positions:(title,summary,startDate,endDate)"])
+.result(function(result) {
+profHTML += "<h2 class=myname> shanthi</a></h2>";
+profHTML += "<h2 class=myname>" + profile.firstName + " " + profile.lastName + "</a></h2>";
+profHTML += "<span class=myheadline>" + profile.headline + "</span>";
+$("#content").html(profHTML);
+});
+
+*/
+		var dates = [
+			{
+				"marker": "2007", 
+				"type": "default",
+				"title": "Soffront Software" ,
+				"content": "Technical Lead/Technical Manager<hr>contacts"				
+			},
+			{
+				"marker": "2009", 
+				"type": "default",
+				"title": "MidTech Software Solutions, Inc." ,
+				"content": "Lead Engineer"
+			},
+			{
+				"marker": "2010", 
+				"type": "default",
+				"title": "Philips" ,
+				"content": "<p>Lead Engineer</p>"
+			},
+		];
+    
+        $(".timeline-container").fancyTimeline({
+        	initPos: 0,
+        	data: dates
+        });
+    });
+</script>
+
