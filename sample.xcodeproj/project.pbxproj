@@ -43,6 +43,7 @@
 		633C684C15BC69DC00AD3F72 /* golf.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 633C684615BC69DB00AD3F72 /* golf.jpg */; };
 		633C684D15BC69DC00AD3F72 /* party.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 633C684715BC69DC00AD3F72 /* party.jpg */; };
 		633C684F15BC6A3300AD3F72 /* VideoGames.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 633C684E15BC6A3300AD3F72 /* VideoGames.jpg */; };
+		633C685115BC868400AD3F72 /* suggestions.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 633C685015BC868400AD3F72 /* suggestions.jpg */; };
 		6354E7A715BB55B4001DBB23 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6354E7A615BB55B4001DBB23 /* UIKit.framework */; };
 		6354E7A915BB55B4001DBB23 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6354E7A815BB55B4001DBB23 /* Foundation.framework */; };
 		6354E7AB15BB55B4001DBB23 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6354E7AA15BB55B4001DBB23 /* CoreGraphics.framework */; };
@@ -139,6 +140,7 @@
 		633C684615BC69DB00AD3F72 /* golf.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = golf.jpg; sourceTree = "<group>"; };
 		633C684715BC69DC00AD3F72 /* party.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = party.jpg; sourceTree = "<group>"; };
 		633C684E15BC6A3300AD3F72 /* VideoGames.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = VideoGames.jpg; sourceTree = "<group>"; };
+		633C685015BC868400AD3F72 /* suggestions.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = suggestions.jpg; sourceTree = "<group>"; };
 		6354E7A215BB55B4001DBB23 /* sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6354E7A615BB55B4001DBB23 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		6354E7A815BB55B4001DBB23 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -281,6 +283,7 @@
 				6354E7B815BB55B4001DBB23 /* ViewController.h */,
 				6354E7B915BB55B4001DBB23 /* ViewController.m */,
 				6354E7BB15BB55B4001DBB23 /* ViewController_iPhone.xib */,
+				633C685015BC868400AD3F72 /* suggestions.jpg */,
 				6354E7BE15BB55B4001DBB23 /* ViewController_iPad.xib */,
 				633C67FF15BBA93D00AD3F72 /* Menu1ViewController.h */,
 				633C680015BBA93D00AD3F72 /* Menu1ViewController.m */,
@@ -555,6 +558,7 @@
 				633C684C15BC69DC00AD3F72 /* golf.jpg in Resources */,
 				633C684D15BC69DC00AD3F72 /* party.jpg in Resources */,
 				633C684F15BC6A3300AD3F72 /* VideoGames.jpg in Resources */,
+				633C685115BC868400AD3F72 /* suggestions.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

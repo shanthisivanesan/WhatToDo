@@ -29,7 +29,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title=@"Your Choices Are";
+    
     
     _menuList = [[NSArray alloc] initWithObjects:@"Entertainment", @"Food", @"Activities", @"Games", @"Socialize",nil];
 }

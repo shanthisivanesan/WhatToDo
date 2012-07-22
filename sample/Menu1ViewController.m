@@ -57,6 +57,9 @@
 }
 
 - (IBAction)homePage:(id)sender {
+    
+    NSArray *controllers = self.navigationController.viewControllers;
+    [self.navigationController popToViewController:[controllers objectAtIndex:0] animated:YES];
 }
 
 - (IBAction)btnBatman:(id)sender {
@@ -67,6 +70,10 @@
 }
 
 - (IBAction)btnSpiderMan:(id)sender {
+    Menu11ViewController *menu11 = [[Menu11ViewController alloc] initWithNibName:@"Menu11ViewController" bundle:nil];
+    [self.navigationController pushViewController:menu11 animated:YES];
+    
+
 }
 
 - (IBAction)btnConcert:(id)sender {

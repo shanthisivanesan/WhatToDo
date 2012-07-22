@@ -20,6 +20,7 @@
 @synthesize homeButton;
 @synthesize lblPage11;
 
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -55,6 +56,22 @@
 
 - (IBAction)homeButton1:(id)sender {
     [self.navigationController popToRootViewControllerAnimated: YES];
+    
+}
+- (IBAction)btnTicket:(id)sender {
+    
+    //paypal
+    
+    NSString *urlAddress = @"http://www.google.com";
+    
+    //Create a URL object.
+    NSURL *url = [NSURL URLWithString:urlAddress];
+    
+    //URL Requst Object
+    //NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
+    
+    //Load the request in the UIWebView.
+   // [self.webView loadRequest:requestObj];
     
 }
 @end

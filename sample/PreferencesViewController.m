@@ -53,6 +53,7 @@
     [self setGenderSwitch:nil];
     [self setAgeStepper:nil];
     [super viewDidUnload];
+    self.title=@"Preferences";
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }

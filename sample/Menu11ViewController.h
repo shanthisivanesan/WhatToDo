@@ -16,5 +16,6 @@
 @property (weak, nonatomic) IBOutlet UITextView *txtSynopsis;
 @property (weak, nonatomic) IBOutlet UILabel *lblSynopsis;
 @property (weak, nonatomic) IBOutlet UILabel *lblShowtimings;
+- (IBAction)btnTicket:(id)sender;
 
 @end
