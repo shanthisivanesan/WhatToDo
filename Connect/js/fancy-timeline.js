@@ -20,7 +20,7 @@
  *	
 ***/
 
-(function($) {  
+(($ => {  
 	$.fn.fancyTimeline = function(params) {
 		// global vars
 		var actualPos = 0;
@@ -47,7 +47,7 @@
 		$(this).append(html);
 		
 		var methods = {
-			positionTo: function(id){
+			positionTo(id) {
 				// get new position
 				var middle = (window.innerWidth/2);
 				var dateOffset = $("#pointer-date-"+ id).offset();
@@ -62,7 +62,7 @@
 					left: newLeft
 				}, 400);
 			},
-			sliderTo: function(id){
+			sliderTo(id) {
 				
 				// back to default
 				$('.timeline-item').removeClass("active");
@@ -96,7 +96,7 @@
 				// update the position
 				actualPos = id;
 			},
-			moveForward: function(){
+			moveForward() {
 				// validate position
 				if(actualPos < maxPos){
 					methods.sliderTo( actualPos + 1 );
@@ -104,7 +104,7 @@
 					methods.sliderTo( 0 );
 				}
 			},
-			moveBackward: function(){
+			moveBackward() {
 				// validate position
 				if(actualPos > 0){
 					methods.sliderTo( actualPos - 1 );
@@ -174,4 +174,4 @@
 		methods.sliderTo(initPos);
         
     };  
-})(jQuery);
+}))(jQuery);
